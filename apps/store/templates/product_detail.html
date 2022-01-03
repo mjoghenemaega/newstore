@@ -1,0 +1,520 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.title }} | {% endblock %}
+
+{% block content %}
+<div class="breadcrumb-area pt-35 pb-35" style="background-color: var(--container-color);" >
+    <div class="container -bd-container">
+        <div class="breadcrumb-content text-center">
+            <ul >
+                <li>
+                    <a href="{% url 'frontpage' %}" style="color: var(--title-color);">Home</a>
+                </li>
+                {% if product.category.parent %}
+                    <li><a href="{% url 'category_detail' product.category.parent.slug %}"  style="color: var(--title-color);">{{ product.category.parent.title }}</a></li>
+                {% endif %}
+                <li><a href="{% url 'category_detail' product.category.slug %}"  style="color: var(--title-color);">{{ product.category.title }}</a></li>
+                <li class="is-active"><a href="{% url 'product_detail' product.category.slug product.slug %}"  style="color: var(--title-color);">{{ product.title }}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="productapp">
+ <!-- perched-area -->
+<section id="order" class="perched-area pt-110 pb-120">
+    <div >
+                <div class="container">
+                    <div class="row justify-content-center">
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                                <div class="product-details">
+                                    <div class="product-details-img">
+                                        <div class="tab-content jump"> 
+                                            
+                                            <div class="tab-pane active large-img-style">
+                                               
+
+                                                <img :src="mainImage"  alt="" > 
+                                                <div class="img-popup-wrap">
+                                                    <a class="img-popup" href="assets/img/product-details/b-large-2.jpg"><i class="pe-7s-expand1"></i></a>
+                                                </div>
+                                            </div>
+                            
+                                    </div>
+             
+                                    <div class="shop-details-tab nav "   >
+
+                                            
+                                        <a class="shop-details-overly " data-toggle="tab" v-for="image in images">
+                                                    
+                                         <img :src="image.thumbnail" @click="changeMainImage(image.image)" >
+                                            </a>
+                                         
+                                    </div>
+                                    
+
+                      
+            
+                    
+                                 </div>
+                                </div>
+                        </div>
+           
+                        <div class="col-xl-5 col-lg-6">
+                            <div class="product-details-content">
+                                <h3>{{ product.title }}</h3>
+                                <h6>&#8358;{{ product.price }}</h6>
+                                <div class="product-rating mb-35">
+                                    <ul>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="fas fa-star"></i></li>
+                                        <li><i class="far fa-star"></i></li>
+                                        <li><i class="far fa-star"></i></li>
+                                    </ul>
+                                    <span>({% if product.get_rating == 0 %}0{% else %}{{ product.get_rating|floatformat:1 }}{% endif %} Review)</span>
+                                </div>
+                                <p style="color: var(--text-color);">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,
+                                by injected humour, or randomised words which even slightly believable.</p>
+                                <div class="perched-info">
+                                    <div class="cart-plus">
+                                        <form action="#">
+                                            <div class="cart-plus-minus" style="text-align: center;
+                                            border-radius: 10px;background-color: lightgrey; color: #333;  padding: 2px">1
+                                            </div>
+                                        </form>
+                                    </div>
+                                    {% if product.in_cart %}
+                                        <a href="#" class="btn add-card-btn btn-success"style="
+                                            border-radius: 20px;padding: 10px; color: #fff; background-color: var(--first-color);">Already in cart!</a>
+                                    {% else %}
+                                        {% if product.num_available > 0 %}
+                                           <a @click="addToCart({{ product.id }})"class="btn add-card-btn"   style="
+                                            border-radius: 20px;padding: 10px; color: #fff; background-color: var(--first-color);">ADD TO CART</a>
+                                        {% else %}
+                                            <p>The product is out of stock!</p>
+                                        {% endif %}
+                                    {% endif %}
+                                    
+                                </div>
+                                <article class="message myAlert-bottom alert alert-success" v-if="showMessage">
+                                    <div class="message-body">
+                                    
+                                    </div>
+                                </article>
+
+                                <div class="product-info mb-50">
+                                    <h5>Product info</h5>
+                                    <ul>
+                                        <li><span>SID :</span> WK4685R</li>
+
+                                        <li><span>CATEGORY :</span> <a href="{% url 'category_detail' product.category.slug %}" style="color: var(--text-color);">{{ product.category.title }},</a><a href="{% url 'product_detail' product.category.slug product.slug %}" style="color: var(--textareaxt-color);">{{ product.title }}</a></li>
+                                        <li style="color: var(--text-color);"><span><img src="https://img.icons8.com/color/50/000000/tags--v1.png"/>Tag : </span> 
+                                         {% if product.category.parent %}
+                                            <a href="{% url 'category_detail' product.category.parent.slug %}" style="color: var(--text-color);">{{ product.category.parent.title }}</a>
+                                        {% endif %}
+                                    </li>
+                                    </ul>
+                                </div>
+                                <div class="product-desc-wrap">
+                                    <ul class="nav nav-tabs mb-25" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="desc-tab" data-toggle="tab" href="#desc" role="tab" aria-controls="desc"
+                                                aria-selected="true">Description</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info"
+                                                aria-selected="false">additional information</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
+                                                aria-selected="false">reviews ({% if product.get_rating == 0 %}0{% else %}{{ product.get_rating|floatformat:1 }}{% endif %} )</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent" >
+                                        <div class="tab-pane fade" id="desc" role="tabpanel" aria-labelledby="desc-tab" > {% if product.description %}
+                                            <p class="desc-content" style="color: var(--text-color);">{{ product.description }}</p>
+                                            {% endif %}
+                                            
+                                        </div>
+                                        <div class="tab-pane fade" class="tab-pane active  show" id="info" role="tabpanel" aria-labelledby="info-tab" data-toggle="collapse">
+                                            {% if product.description %}
+                                                <p class="desc-content" style="color: var(--text-color);">{{ product.description }}</p>
+                                                {% endif %}
+                                        </div>
+                                             <div class="tab-pane fade " id="review" role="tabpanel" aria-labelledby="review-tab">
+                                                <div class="product-review-wrap">
+                                                    <h5>{% if product.get_rating == 0 %}0{% else %}{{ product.get_rating|floatformat:1 }}{% endif %} Review for {{ product.title}}</h5>
+                                    
+                                                          {% for review in product.reviews.all %}
+                                                
+                                                    <div class="single-review">
+                                                        <div class="review-avatar">
+                                                             <img src="/static/images/review_thumb.jpg" alt="img">
+                                                        </div>
+                                                        <div class="review-content">
+                                                            <div class="review-rating">
+                                                                <ul>
+                                                                    <li><i class="fas fa-star"></i></li>
+                                                                    <li><i class="fas fa-star"></i></li>
+                                                                    <li><i class="fas fa-star"></i></li>
+                                                                    <li><i class="far fa-star"></i></li>
+                                                                    <li><i class="far fa-star"></i></li>
+                                                                </ul>
+
+                                                            ({{ review.stars }} stars)
+                                                            </div>
+                                                            <div class="review-meta">
+                                                                <h6>{{review.user}} <span>{{ review.date_added|date:"Y-m-d" }}</span></h6>
+                                                            </div>
+                                                            <p style="color: var(--text-color);">{{ review.content }}</p>
+                                                        </div>
+
+                                                    </div>
+                                                <hr>
+                                                {% empty %}
+
+                                                    <div class="notification space-below">
+                                                    No reviews yet...
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+
+                          
+
+                        {% if request.user.is_authenticated %}
+                        <div >
+                            <div class="ratting-form-wrapper pl-50">
+                                <h3>Add a Review</h3>
+                                <div class="ratting-form">
+                                    <form method="post" action=".">
+                                    {% csrf_token %}
+                                        <div class="star-box">
+                                            <span>Your rating:</span>
+                                            <div class="ratting-star">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label>Give stars:</label>
+
+                                            <div clas="control">
+                                                <div class="select">
+                                                    <select name="stars" style="color: var(--text-color);">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3" selected>3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                         </div>
+                                             <hr>
+
+                                        <div class="row" >
+                                            <div class="col-md-6">
+                                                <div class="rating-form-style mb-10">
+                                                    <input placeholder="Name" name="person" type="text" >
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="rating-form-style mb-10">
+                                                    <input placeholder="Email" type="email">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="rating-form-style form-submit" >
+
+                                                    <textarea class="textarea" name="content" placeholder="Message" ></textarea>
+                                                    <input type="submit" value="Submit" style="color: #fff">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    {% else %}
+                                    <p>Please <a href="{% url 'login' %}">sign in </a>to add review!</p>
+                                    {% endif %}
+                                            </div>                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+
+
+                                </div>
+                                        
+ 
+
+                        </div>
+                    </div>
+                    </div>
+
+                    </div>
+                    
+                </div>
+
+
+            </section>
+
+        <section class="section bd-container">
+            <div class="bd-container">
+                <div class="section-title text-center mb-50" style="color: var(--title-color)">
+                                <h2>Related products</h2>
+                            </div>
+
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="causes-two__carousel owl-theme owl-carousel">
+                             {% with related_products as list_products %}
+                              {%  for p in list_products  %}
+                            
+                            <!--Causes Two Single-->
+                            <div class="causes-one__sing">
+                                <div class="menu__content">
+                        <a href="{% url 'product_detail'   p.category.slug    p.slug %}" >
+                        <img src="{{ p.get_thumbnail }}" alt="{{p.title}}.jpg"  class="menu__img">
+
+                        <a href="{% url 'product_detail'   p.category.slug    p.slug %}"><h3 class="menu__name">{{p.title}}</h3></a>
+                        <span class="menu__detail"><div>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                        </span>
+                        <span class="menu__preci">&#8358;{{p.price|floatformat:2}}</span>
+                        <a href="{% url 'product_detail'   p.category.slug    p.slug %}" class="button menu__button"><i class='bx bxs-cart-download'></i></i></a>
+
+                    </div>
+                    
+                                
+                            </div>
+                            {% endfor %} 
+                             {% endwith %}
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+            </div>
+            <!-- perched-area-end -->
+
+
+
+
+                      
+
+
+    <style>
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 200px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+@media screen and (max-width: 768px){
+  .modal{
+    padding-bottom: 0%;
+  }
+  .modal-content {
+  padding: 10px;
+  border: 1px solid #888;
+  width: 50%;
+}
+}
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+
+
+
+<!-- Trigger/Open The Modal -->
+<b id="myBtn"></b>
+
+<!-- The Modal -->
+<div id="myModal" class="modal" >
+
+  <!-- Modal content -->
+  <div class="modal-content" style="background-color: white; color: green" >
+    <span class="close text-right" style="float: right; font-size: 30px">&times;</span>
+    <p><b>Your order has been sent!..</b> </p>
+    <br>
+    <i>Ensure you contact our customer care line before making payments!
+    </i><br><i>You can use the details below.</i>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick= function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+</script>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    var productapp = new Vue({
+        el: '#productapp',
+        delimeters: ['[[', ']]'],
+        store: store,
+        data () {
+            return {
+                showMessage: false,
+                mainImage: '{{ product.image.url }}',
+                images: [{{ imagesstring|safe }}]
+            }
+        },
+        mounted() {
+            console.log('Mounted');
+        },
+        methods: {
+            changeMainImage(image) {
+                this.mainImage = image;
+            },
+            addToCart(product_id) {
+                console.log('Product_id:', product_id);
+
+                var data = {
+                    'product_id': product_id, 
+                    'update': false,
+                    'quantity': 1
+                };
+                    
+                fetch('/api/add_to_cart/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    credentials: 'same-origin',
+                    body: JSON.stringify(data)
+                })
+                .then((response) => {
+                    console.log(response)
+
+                    this.showMessage = true
+
+                    store.commit('increment', 1);
+
+                    setTimeout(() => {
+                        this.showMessage = false
+                    }, 2000)
+                })
+                .then((response) => {
+                    console.log('added to cart');
+                    console.log(response);
+
+                    window.location.reload();
+                })
+                .catch(function (error) {
+                    console.log('Error 2');
+                    console.log(error);
+                })
+            }
+        }
+    });
+</script>
+
+        <script  src="{% static 'assets/js/jquery-1.8.2.min.js' %}"></script>
+        <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}" ></script>
+        <script  src="{% static 'assets/js/jquery.backstretch.min.js' %}"></script>
+        <script  src="{% static 'assets/js/jquery.countdown.js' %}"></script>
+        <script src="{% static 'assets/js/scripts.js' %}"></script>
+
+        <script src="{% static 'assets/js/jquery/jquery-3.5.1.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/js/jarallax/jarallax.min.js' %}"></script>
+        <script src="{% static 'assets/js/jquery-ajaxchimp/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'assets/js/jquery-appear/jquery.appear.min.js' %}"></script>
+        <script src="{% static 'assets/js/jquery-circle-progress/jquery.circle-progress.min.js' %}"></script>
+        <script src="{% static 'assets/js/jquery-magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'assets/js/jquery-validate/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'assets/js/nouislider/nouislider.min.js' %}"></script>
+        <script src="{% static 'assets/js/odometer/odometer.min.js' %}"></script>
+        <script src="{% static 'assets/js/swiper/swiper.min.js' %}"></script>
+        <script src="{% static 'assets/js/tiny-slider/tiny-slider.min.js' %}"></script>
+        <script src="{% static 'assets/js/wnumb/wNumb.min.js' %}"></script>
+        <script src="{% static 'assets/js/wow/wow.js' %}"></script>
+        <script src="{% static 'assets/js/isotope/isotope.js' %}"></script>
+        <script src="{% static 'assets/js/countdown/countdown.min.js' %}"></script>
+        <script src="{% static 'assets/js/owl-carousel/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'assets/js/slick.min.js' %}"></script>
+
+        
+
+        <!-- template js -->
+        <script src="{% static 'assets/js/halpes.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+
+{% block title %}learn | {% endblock %}
+
+{% block content %}
+    
+
+
+<div class="breadcrumb-area pt-35 pb-35"   style="background-color:  var(--container-color);">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li><a href="{% url 'frontpage' %}"  style="color: var(--title-color);">Home</a></li>
+                <li><a href="{% url 'about' %}"  style="color: var(--title-color);">Learn</a></li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<section id="learn">
+        <!-- Coming Soon -->
+        <div class="coming-soon ">
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            <h2>This page is Coming Soon</h2>
+                            <p>We are working very hard on the new version of our site. It will bring a lot of new features. Stay tuned!</p>
+                            <div class="timer">
+                                <div class="days-wrapper">
+                                    <span class="days"></span> <br>days
+                                </div>
+                                <div class="hours-wrapper">
+                                    <span class="hours"></span> <br>hours
+                                </div>
+                                <div class="minutes-wrapper">
+                                    <span class="minutes"></span> <br>minutes
+                                </div>
+                                <div class="seconds-wrapper">
+                                    <span class="seconds"></span> <br>seconds
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </section>
+
+          <style type="text/css">
+            body {
+    
+    text-align: left;
+    font-family: 'Lato', Arial, sans-serif;
+    color: #555;
+    font-weight: 400;
+    border-top: 2px solid #e75967;
+}
+
+strong { font-weight: 700; }
+a:hover { text-decoration: none; }
+
+::-moz-selection { background: #e75967; color: #fff; text-shadow: none; }
+::selection { background: #e75967; color: #fff; text-shadow: none; }
+
+/***** Coming Soon *****/
+#learn{
+  background: #f8f8f8 url(../static/images/1.jpg);
+  background-size: cover;
+
+}
+.coming-soon {
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+}
+
+.inner-bg {
+    padding: 55px 0 60px 0;
+    background: url(../img/pattern-3.png);
+    -moz-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
+    -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.3) inset;
+}
+
+.coming-soon h2 {
+    font-size: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 0 1px 7px rgba(0,0,0,.2);
+}
+
+.coming-soon p {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 36px;
+    text-shadow: 0 1px 7px rgba(0,0,0,.2);
+}
+
+.timer {
+    margin-top: 40px;
+    text-shadow: 0 1px 5px rgba(0,0,0,.1);
+}
+
+.timer .days-wrapper,
+.timer .hours-wrapper,
+.timer .minutes-wrapper,
+.timer .seconds-wrapper {
+    display: inline-block;
+    width: 160px;
+    height: 140px;
+    margin: 0 10px;
+    padding-top: 20px;
+    background: #2d2d2d; /* browsers that don't support rgba */
+    background: rgba(45,45,45,.7);
+    font-size: 18px;
+    -moz-border-radius: 80px;
+    -webkit-border-radius: 80px;
+    border-radius: 80px;
+    
+}
+
+.timer .days-wrapper:hover,
+.timer .hours-wrapper:hover,
+.timer .minutes-wrapper:hover,
+.timer .seconds-wrapper:hover {
+    background: #e75967 url(../img/pattern-2.png);
+    text-shadow: none;
+}
+
+.timer .days,
+.timer .hours,
+.timer .minutes,
+.timer .seconds {
+    font-size: 80px;
+    line-height: 90px;
+}
+
+
+
+/***** Media Queries *****/
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+
+    .timer .days-wrapper,
+    .timer .hours-wrapper,
+    .timer .minutes-wrapper,
+    .timer .seconds-wrapper {
+        width: 140px;
+        height: 120px;
+        margin: 0 7px;
+        padding-top: 20px;
+        -moz-border-radius: 70px;
+        -webkit-border-radius: 70px;
+        border-radius: 70px;
+    }
+
+    .timer .days,
+    .timer .hours,
+    .timer .minutes,
+    .timer .seconds {
+        font-size: 60px;
+        line-height: 70px;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    body {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .inner-bg {
+        padding: 45px 0 50px 0;
+    }
+
+    .coming-soon h2 {
+        font-size: 36px;
+        padding: 0 20px;
+    }
+
+    .coming-soon p {
+        padding: 0 20px;
+    }
+
+    .timer .days-wrapper,
+    .timer .hours-wrapper,
+    .timer .minutes-wrapper,
+    .timer .seconds-wrapper {
+        width: 140px;
+        height: 120px;
+        margin: 7px;
+        padding-top: 20px;
+        -moz-border-radius: 70px;
+        -webkit-border-radius: 70px;
+        border-radius: 70px;
+    }
+
+    .timer .days,
+    .timer .hours,
+    .timer .minutes,
+    .timer .seconds {
+        font-size: 60px;
+        line-height: 70px;
+    }
+
+
+}
+
+@media (max-width: 480px) {
+
+}
+
+          </style>
+{% endblock %}

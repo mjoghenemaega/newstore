@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+
+{% block title %}Thank you |{% endblock %}
+
+{% block content %}
+<div id="cartapp">
+<div class="breadcrumb-area pt-35 pb-35 "  style="color: var(--container-color);">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li><a href="{% url 'frontpage' %}" style="color: var(--title-color);">Home</a></li>
+                <li><a href="#" style="color: var(--title-color);">Success</a></li>    
+            </ul>
+        </div>
+    </div>
+</div>
+<section class="section">
+    <div class="checkout-area pb-80 pt-100">
+    <div class="container">
+        <div class="row">
+            <div class="ml-auto mr-auto col-lg-9">
+                <div class="checkout-wrapper">
+                    <div id="faq" class="panel-group">
+                        
+                        <div class="panel panel-default single-my-account">
+                            <div class="panel-heading my-account-title">
+                                <h3 class="panel-title" style="text-align: center"> <a data-parent="#faq" href="#my-account-3"><b style="font-size: 25px">Order Recieved!</b></a></h3>
+                            </div>
+                            <div id="my-account-3" class="">
+                                <div class="panel-body">
+                                    <div class="myaccount-info-wrapper">
+                                        <div class="account-info-wrapper">
+                                             <h1 class="title" style="font-size: 25px; color: #333;">Thank you</h1>
+
+        <p style="font-size: 20px;color: #333; ">Thank you for the order. It will be processed as soon as possible!</p>								        <p><strong style="font-size: 25px;color: #333;">Total: </strong>{{ order.paid_amount }}</p>
+								  
+								        <p style="font-size: 25px;color: #333;"><strong>Order ID: </strong>{{ order.id }}</p>
+								        <p style="font-size: 25px;color: #333;"><strong >Payment method: </strong>Direct bank transfer</p>
+								       
+
+                                        </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default single-my-account">
+                            <div class="panel-heading my-account-title">
+                                <h3 class="panel-title" style="text-align: center"> <a data-parent="#faq" href="#my-account-3"><b style="font-size: 25px">OUR bank details</b></a></h3>
+                            </div>
+                            <div id="my-account-3" class="">
+                                <div class="panel-body">
+                                    <div class="myaccount-info-wrapper">
+                                        <div class="account-info-wrapper">
+                                        	
+                                        	<br>
+                                         <p style="font-size: 25px;color: #333;">ACCOUNT NAME: <b> FUTLINK HARDWARES</b></p>
+								        <p style="font-size: 25px ;color: #333;">BANK: <b> First Bank</b></p>
+								        <p style="font-size: 25px ;color: #333;">ACCOUNT NUMBER: <b> 3121309234</b></p>
+								        <p style="font-size: 25px ;color: #333;">SORT CODE:<b> Savings Account</b></p>
+								  
+								     
+
+                                        </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default single-my-account">
+                            <div class="panel-heading my-account-title">
+                                <h3 class="panel-title" style="text-align: center"> <a data-parent="#faq" href="#my-account-3" style="font-size: 25px ;color: #333;"><b>OUR CUSTOMER CARE LINES</b></a></h3>
+                            </div>
+                            <div id="my-account-3" class="">
+                                <div class="panel-body">
+                                    <div class="myaccount-info-wrapper">
+                                        <div class="account-info-wrapper">
+                                                   <div class="wrapper">
+            <h2 style="color: #333;">NOTE:</h2>
+
+            <h3 style="color: #333;">ENSURE YOU CONTACT OUR CUSTOMER CARE LINE BEFORE PAYMENT!</h3>
+            <br>
+
+            <p>
+                
+                
+               <b style="font-size: 25px;color: #333;"> CUSTOMER CARE LINES</b><br>
+               <br>
+               <ul style="font-size: 25px" style="color: #333;">
+                  <b><li style="color: #333;">08124002165</li></b> 
+                   <b><li style="color: #333;">08113503481</li></b>
+                   <b><li style="color: #333;">08124002165</li></b>
+               </ul>
+            </p>
+
+            <br>
+
+    
+
+            <p style="text-align: center; color: #333;">Thanks for ordering from us!</p>
+        </div>
+    
+
+                                        </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </section>
+    <style>
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 200px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+@media screen and (max-width: 768px){
+  .modal{
+    padding-bottom: 0%;
+  }
+  .modal-content {
+  padding: 10px;
+  border: 1px solid #888;
+  width: 50%;
+}
+}
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+
+
+
+<!-- Trigger/Open The Modal -->
+<b id="myBtn"></b>
+
+<!-- The Modal -->
+<div id="myModal" class="modal" >
+
+  <!-- Modal content -->
+  <div class="modal-content" style="background-color: white; color: green" >
+    <span class="close text-right" style="float: right; font-size: 30px">&times;</span>
+    <p><b>Your order has been sent!..</b> </p>
+    <br>
+    <i>Ensure you contact our customer care line before making payments!
+    </i><br><i>You can use the details below.</i>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick= function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+window.onload =setTimeout(function(event){
+   modal.style.display = "block";},1000);
+</script>
+
+
+
+{% endblock %}

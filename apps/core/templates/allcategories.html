@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %} allCategories | {% endblock %}
+
+{% block content %}
+<ul class="text-center">
+                                      {% for category in menu_categories %}
+                                      <li><a href="{% url 'category_detail' category.slug %}">{{ category.title}}</a></li>
+                                      {% endfor %}
+                                    </ul>
+
+
+{% endblock %}

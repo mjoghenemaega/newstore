@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block title %}All_products | {% endblock %}
+
+{% block content %}
+<div class="breadcrumb-area pt-35 pb-35"   style="background-color:  var(--container-color);">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li><a href="{% url 'frontpage' %}"  style="color: var(--title-color);">Home</a></li>
+                <li><a href="{% url 'all_products' %}"  style="color: var(--title-color);">All Products</a></li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section style="padding-top: 2px;">
+<div class="images glide ">
+      <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides">
+          <li class="glide__slide">
+            <img src="/static/images/monkey-1.gif" class="responsive">
+          </li>
+
+          <li class="glide__slide">
+            <img src="/static/images/istockphoto-952063596-612x612.jpg" class="responsive">
+          </li>
+
+          <li class="glide__slide">
+           
+            <img src="/static/images/istockphoto-949187646-612x612.jpg" class="responsive">
+          </li>
+
+          <li class="glide__slide">
+            <img src="/static/images/istockphoto-118365600-612x612.jpg" class="responsive">
+
+          </li>
+
+          <li class="glide__slide">
+            <img src="/static/images/tools-and-electrical-material-on-a-white-table-top-general-picture-id1129160928.jpg" class="responsive">
+          </li>
+
+          <li class="glide__slide">
+            <img src="/static/images/istockphoto-899243764-612x612.jpg" class="responsive">
+
+          </li>
+        </ul>
+      </div>
+
+      <div class="glide__arrows" data-glide-el="controls">
+        <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i class="fas fa-arrow-left"></i></button>
+        <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+</section>
+
+    <script>
+      new Glide(".images",{
+        type: 'carousel',
+        perView: 5,
+        autoplay: 3500,
+        focusAt: 'center',
+        gap: 8,
+        startAt: 1,
+  autoplay: 3500,
+  perView: 2,
+  breakpoints:{
+    800:{
+      perView: 1
+    },
+
+  }
+      }).mount();
+    </script>
+
+<style type="text/css">
+
+.glide__slide img{
+  width: 100%;
+  border-radius: 15px;
+}
+
+.glide__slide{
+  filter: blur(6px);
+  opacity: .7;
+  transition: .3s linear;
+}
+
+.glide__slide--active{
+  opacity: 1;
+  filter: none;
+  transform: scale(1.1);
+}
+
+.glide__slides{
+  overflow: visible;
+}
+.responsive {
+  width: 100%;
+  max-width: auto;
+  height: auto;
+}
+</style>
+
+
+
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto ;
+  grid-template-rows: auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+  background-color: #F1F3F2;
+}
+
+.grid-container > div {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 15px;
+}
+</style>
+<section >
+
+<section class=" section bd-container" >
+
+                
+                <h2 class="section-title">All products</h2>
+
+   {% with all_products as list_products %}
+        {% include 'parts/product_list.html' %}
+    {% endwith %} 
+
+
+                <div class="menu__container bd-grid">
+                </div>
+            </section>
+
+             
+
+ <div   class="text-center">
+{% if all_products.has_other_pages %}
+
+  <ul class="pagination " >
+    {% if all_products.has_previous %}
+      <li><a href="?page={{ all_products.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in all_products.paginator.page_range %}
+      {% if all_products.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if all_products.has_next %}
+      <li><a href="?page={{ all_products.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+  
+{% endif %}
+</div>
+
+
+
+            
+{% endblock %}

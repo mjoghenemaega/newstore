@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Search | {% endblock %}
+
+{% block content %}
+
+<div id="cartapp">
+<div class="breadcrumb-area pt-35 pb-35 " style="background-color: var(--container-color);">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li><a href="{% url 'frontpage' %}" style="color: var(--title-color);">Home</a></li>
+                <li style="color: var(--title-color);">Search</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section class="section">
+    <h3 class="section-title">Search term: "{{ query }}"</h2>
+
+    <hr>
+
+</section>
+   <section class="section bd-container">
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css "> 
+    <form method="get" action="{% url 'search' %}">
+        <div class="columns is-multiline">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <h2 class="table-content table-responsive cart-table-content"style="color: var(--title-color)">Query</h2>
+
+                <div class="field">
+                    <label style="color: var(--title-color)">Search term</label>
+
+                    <div class="control" style="color: var(--title-color)">
+                        <input type="text" name="query" class="input" value="{{ query }}" >
+                    </div>
+                </div>
+
+                <div class="field col-lg-12 col-md-12 col-sm-12 col-12">
+                    <label style="color: var(--title-color)">In stock</label>
+
+                    <div class="control">
+                        <input type="checkbox" name="instock"{% if instock %}checked="checked"{% endif %}>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column is-4">
+                <h2 class="is-size-5" style="color: var(--title-color)">Price range</h2>
+
+                <div class="field">
+                    <label style="color: var(--title-color)">From</label>
+                    <div class="control">
+                        <input type="number" name="price_from" class="input" value="{{ price_from }}">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label style="color: var(--title-color)">To</label>
+                    <div class="control">
+                        <input type="number" name="price_to" class="input" value="{{ price_to }}" style="color: var(--title-color)">
+                    </div>
+                </div>
+            </div>
+
+            <div class="column is-4">
+                <h2 class="is-size-5" style="color: var(--title-color)">Sorting</h2>
+
+                <div class="field">
+                    <label style="color: var(--title-color)">Select sorting criteria</label>
+
+                    <div class="control">
+                        <div class="select">
+                            <select name="sorting">
+                                <option value="-date_added"{% if sorting == '-date_added' %} selected{% endif %}>Newest first</option>
+                                <option value="price"{% if sorting == 'price' %} selected{% endif %}>Price low-high</option>
+                                <option value="-price"{% if sorting == '-price' %} selected{% endif %}>Price high-low</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column is-12">
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-success">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <hr>
+</section>
+   <section class="section">
+
+    {% with products as list_products %}
+        {% include 'parts/product_list.html' %}
+    {% endwith %}
+</section>
+<div  class="text-center">
+{% if products.has_other_pages %}
+
+  <ul class="pagination " >
+    {% if products.has_previous %}
+      <li><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in products.paginator.page_range %}
+      {% if products.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if products.has_next %}
+      <li><a href="?page={{ products.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+  
+{% endif %}
+</div>
+
+            
+{% endblock %}

@@ -1,0 +1,36 @@
+
+                <div class="menu__container bd-grid">
+                    {%  for p in list_products  %}
+
+        
+                    <div class="menu__content">
+                        <a href="{% url 'product_detail'   p.category.slug    p.slug %}" >
+                        <img src="{{ p.get_thumbnail }}" alt="{{p.title}}.jpg"  class="menu__img">
+                        <span class="text-center" style="font-size: 0.7rem;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  
+  background-color: var(--orange);
+  padding: 0.2rem 0.4rem;
+  border-radius: 100%;
+  color: #fff;"><i>New</i></span>
+
+                        <a href="{% url 'product_detail'   p.category.slug    p.slug %}"><h3 class="menu__name">{{p.title}}</h3></a>
+                        <span class="menu__detail"><div>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                        </span>
+                        <span class="menu__preci">&#8358;{{p.price|floatformat:2}}</span>
+                        <a href="{% url 'product_detail'   p.category.slug    p.slug %}" class="button menu__button"><i class='bx bxs-cart-download'></i></i></a>
+
+                    </div>
+                    
+                    {% endfor %} 
+
+                   
+                </div>

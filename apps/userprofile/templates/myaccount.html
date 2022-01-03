@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="breadcrumb-area pt-35 pb-35 bg-gray-3"style="padding-top: 60px;">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li><a href="{% url 'frontpage' %}">Home</a></li>
+                <li><a href="{% url 'myaccount' %}">MyAccount</a></li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+    <div class="checkout-area pb-80 pt-100">
+    <div class="container">
+        <div class="row">
+            <div class="ml-auto mr-auto col-lg-9">
+                <div class
+                s="checkout-wrapper">
+                    <div id="faq" class="panel-group">
+                        <div class="panel panel-default single-my-account">
+                            <div class="panel-heading my-account-title">
+                                <h3 class="panel-title"><span>1 .</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-1">Edit your account information </a></h3>
+                            </div>
+                            <div id="my-account-1" class="panel-collapse collapse show">
+                                <div class="panel-body">
+                                    <div class="myaccount-info-wrapper">
+                                        <div class="account-info-wrapper">
+                                            <h4 style="color: #333;">My Account Information</h4>
+                                            <h5 style="color: #333;">Your Personal Details</h5>
+                                        </div>
+                                          <div class="row">
+                                            <div class="col-lg-6 col-md-6">
+                                                <div class="billing-info">
+                                                    <label style="color: #333;">Full Name</label>
+                                                    <input type="text" placeholder="{{ request.user.get_full_name }}">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="billing-info">
+                                                    <label style="color: #333;">Email Address</label>
+                                                    <input type="email" placeholder="{{ request.user.email }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6">
+                                                <div class="billing-info">
+                                                    <label style="color: #333;">Telephone</label>
+                                                    <input type="text" placeholder="{{ request.user.userprofile.phone }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6">
+                                                <div class="billing-info">
+                                                    <label style="color: #333;">Address</label>
+                                                    <input type="text" placeholder="{{ request.user.userprofile.address }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="billing-back-btn">
+                                            <div class="billing-back">
+                                                <a href="#" style="color: #333;"><i class="fa fa-arrow-up"></i> back</a>
+                                            </div>
+                                            <div class="billing-btn" style="color: #333;">
+                                                <button type="submit">Continue</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel panel-default single-my-account">
+                            <div class="panel-heading my-account-title">
+                                <h3 class="panel-title"><span>2 .</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-3"style="color: #333;">Your address book entries   </a></h3>
+                            </div>
+                            <div id="my-account-3" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="myaccount-info-wrapper">
+                                        <div class="account-info-wrapper" style="color:   color: var(--title-color);">
+                                            <h4 style="color: #333;">Address Book Entries</h4>
+                                        </div>
+                                        <div class="entries-wrapper">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 d-flex align-items-center justify-content-center">
+                                                    <div class="entries-info text-center">
+                                                        <p><strong style="color: #333;">Address: </strong>{{ request.user.userprofile.address }}</p>
+                                                        <p><strong style="color: #333;">Zip and place: </strong>{{ request.user.userprofile.zipcode }} {{ request.user.userprofile.place }}</p>
+    
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 d-flex align-items-center justify-content-center">
+                                                    <div class="entries-edit-delete text-center">
+                                                        <a class="edit" href="#" >Edit</a>
+                                                        <a href="#">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="billing-back-btn">
+                                            <div class="billing-back">
+                                                <a href="#"><i class="fa fa-arrow-up"></i> back</a>
+                                            </div>
+                                            <div class="billing-btn">
+                                                <button type="submit">Continue</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="panel panel-default single-my-account">
+                            <div class="panel-heading my-account-title">
+                                <h3 class="panel-title"><span>3 .</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-2" style="color: #333;">Your Orders </a></h3>
+                            </div>
+                            <div id="my-account-2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="myaccount-info-wrapper">
+                                        <div class="account-info-wrapper">
+                                            <h4 style="color: #333;">Orders</h4>
+                                            
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12" style="color: #333;">
+                                                    {% for order in request.user.orders.all %}
+        <article class="message is-light">
+            <div class="message-header">
+                <p style="color: #333;">{{ order.created_at }}</p>
+                <p style="color: #333;"><strong style="color: #333;">Status: </strong >{{ order.status }}</p>
+            </div>
+
+            <div class="message-body">
+                <table class="table is-striped is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th style="color: #333;">Title</th>
+                            <th style="color: #333;">Quantity</th>
+                            <th style="color: #333;">Price</th>
+                        </tr>
+                    </thead>
+
+                    <tbody style="color: #333;">
+                        {% for item in order.items.all %}
+                            <tr>
+                                <td style="color: #333;">{{ item.product.title }}</td>
+                                <td style="color: #333;">{{ item.quantity }}</td>
+                                <td style="color: #333;">{{ item.price }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td style="color: #333;">Total</td>
+                            <td style="color: #333;">{{ order.get_total_quantity }}</td>
+                            <td style="color: #333;">{{ order.paid_amount }}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </article>
+    {% empty %}
+        <p style="color: #333;">You don't have any order yet...</p>
+    {% endfor %}
+
+
+
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="billing-back-btn">
+                                            <div class="billing-back">
+                                                <a href="#"><i class="fa fa-arrow-up"></i> back</a>
+                                            </div>
+                                            <div class="billing-btn">
+                                                <button type="submit">Continue</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default single-my-account">
+                            <div class="panel-heading my-account-title">
+                                <h3 class="panel-title"><span>4 .</span> <a href="{% url 'cart' %}">Modify your Cart   </a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+{% endblock %}

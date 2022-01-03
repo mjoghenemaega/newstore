@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+<div class="login-register-area pt-100 pb-100" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                <div class="login-register-wrapper">
+                    <div class="login-register-tab-list nav">
+                        <a   href="{% url 'login' %}">
+                            <h4> login </h4>
+                        </a>
+                        
+                        <a class="active"data-toggle="tab" href="#lg2">
+                            <h4 > register </h4>
+                        </a>
+                    </div>
+                    
+
+
+                        <div id="lg2" class="tab-pane" style="color:#fff ">
+                            <div class="login-form-container" style=" background: #f8f8f8 url(../static/images/1.jpg);background-size: cover; color:#fff ">
+                                <div class="login-register-form" style="color:#fff ">
+
+                                    <form method="post" action="." style="color:#fff ">
+            {% csrf_token %}
+                                        {{ form.as_p }}
+
+            {{ userprofileform.as_p }}
+    
+                                        <div class="button-box">
+                                            <button type="submit" ><span>Register</span></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

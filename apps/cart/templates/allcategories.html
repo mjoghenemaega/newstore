@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} allCategories | {% endblock %}
+
+{% block content %}
+<section class=" section bd-container">
+<ul class="text-center" >
+                                      {% for category in menu_categories %}
+                                      <li ><a href="{% url 'category_detail' category.slug %}" style="color: var(--title-color); padding: 30px ">{{ category.title}}</a></li>
+                                      {% endfor %}
+                                    </ul>
+                                </section>
+
+
+{% endblock %}

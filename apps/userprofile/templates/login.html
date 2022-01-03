@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="breadcrumb-area pt-35 pb-35 "style="background-color: var(--container-color);">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li><a href="{% url 'frontpage' %}"style="color: var(--title-color);">Home</a></li>
+                <li><a href="{% url 'login' %}" style="color: var(--title-color);">login</a></li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="login-register-area pt-100 pb-100 ">
+    <div class="container ">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                <div class="login-register-wrapper">
+                    <div class="login-register-tab-list nav">
+                        <a class="active" data-toggle="tab" href="#lg1">
+                            <h4> login </h4>
+                        </a>
+                        <a  href="{% url 'signup' %}" >
+                            <h4> register </h4>
+                        </a>
+                    </div>
+                    <div class="tab-content">
+                        <div id="lg1" class="tab-pane active">
+                            <div class="login-form-container" style=" background: #f8f8f8 url(../static/images/1.jpg);background-size: cover">
+                                <div class="login-register-form">
+                                    <form method="post" action=".">
+                                      {% csrf_token %}
+    
+                                    
+                                        <input type="text" placeholder="Username" name="username" id="id_username" style="color:#fff ">
+                                        <input type="password" name="password" id="id_password" placeholder="Password" style="color:#fff ">
+                                        <div class="button-box">
+                                            <div class="login-toggle-btn">
+                                                <input type="checkbox">
+                                                <label style="color:#fff ">Remember me</label>
+                                                <a href="#"style="color:#fff ">Forgot Password?</a>
+                                            </div>
+                                            {% if form.errors %}
+                <div class="notification is-danger" style="color:#fff ">
+                    Your username and password didn't match! Please try again!
+                </div>
+            {% endif %}
+    
+                                            <button type="submit"><span>Login</span></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

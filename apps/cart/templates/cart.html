@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<div class="breadcrumb-area pt-35 pb-35"  style="background-color: var(--container-color);">
+<!-- <div class="breadcrumb-area pt-35 pb-35"  style="background-color: var(--container-color);">
     <div class="container">
         <div class="breadcrumb-content text-center">
             <ul>
@@ -143,43 +143,355 @@
 
 </div>
 </div>
+ -->
 
+    
+     <div class="main-wrapper">
+ 
+         <!-- Begin Main Header Area -->
+       
+         <!-- Main Header Area End Here -->
+ 
+         <!-- Begin Main Content Area -->
+         <main class="main-content">
+             <div class="breadcrumb-area breadcrumb-height" data-bg-image="{% static 'assets/images/breadcrumb/bg/1-1-1919x388.jpg' %}">
+                 <div class="container h-100">
+                     <div class="row h-100">
+                         <div class="col-lg-12">
+                             <div class="breadcrumb-item">
+                                 <h2 class="breadcrumb-heading">Cart Page</h2>
+                                 <ul>
+                                     <li>
+                                         <a href="{%  url 'frontpage' %}">Home</a>
+                                     </li>
+                                     <li>Cart Page</li>
+                                 </ul>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="cart-area section-space-y-axis-100">
+                 <div class="container">
+                     <div class="row">
+                         <div class="col-12">
+                             <form action="javascript:void(0)">
+                                 <div class="table-content table-responsive">
+                                     <table class="table">
+                                         <thead>
+                                             <tr>
+                                                 <th class="product_remove">remove</th>
+                                                 <th class="product-thumbnail">images</th>
+                                                 <th class="cart-product-name">Product</th>
+                                                 <th class="product-price">Unit Price</th>
+                                                 <th class="product-quantity">Quantity</th>
+                                                 <th class="product-subtotal">Total</th>
+                                             </tr>
+                                         </thead>
+                                         <tbody>
+                                             <tr>
+                                                 <td class="product_remove">
+                                                     <a href="#">
+                                                         <i class="pe-7s-close" data-tippy="Remove" data-tippy-inertia="true"
+                                                     data-tippy-animation="shift-away" data-tippy-delay="50"
+                                                     data-tippy-arrow="true" data-tippy-theme="sharpborder"></i>
+                                                     </a>
+                                                 </td>
+                                                 <td class="product-thumbnail">
+                                                     <a href="#">
+                                                         <img src="assets/images/product/small-size/1-1-112x124.png" alt="Cart Thumbnail">
+                                                     </a>
+                                                 </td>
+                                                 <td class="product-name"><a href="#">American Marigold</a></td>
+                                                 <td class="product-price"><span class="amount">$23.45</span></td>
+                                                 <td class="quantity">
+                                                     <div class="cart-plus-minus">
+                                                         <input class="cart-plus-minus-box" value="1" type="text">
+                                                         <div class="dec qtybutton">
+                                                             <i class="fa fa-minus"></i>
+                                                         </div>
+                                                         <div class="inc qtybutton">
+                                                             <i class="fa fa-plus"></i>
+                                                         </div>
+                                                     </div>
+                                                 </td>
+                                                 <td class="product-subtotal"><span class="amount">$23.45</span></td>
+                                             </tr>
+                                             <tr>
+                                                 <td class="product_remove">
+                                                     <a href="#">
+                                                         <i class="pe-7s-close" data-tippy="Remove" data-tippy-inertia="true"
+                                                     data-tippy-animation="shift-away" data-tippy-delay="50"
+                                                     data-tippy-arrow="true" data-tippy-theme="sharpborder"></i>
+                                                     </a>
+                                                 </td>
+                                                 <td class="product-thumbnail">
+                                                     <a href="#">
+                                                         <img src="assets/images/product/small-size/1-2-112x124.png" alt="Cart Thumbnail">
+                                                     </a>
+                                                 </td>
+                                                 <td class="product-name"><a href="#">Black Eyed Susan</a></td>
+                                                 <td class="product-price"><span class="amount">$25.45</span></td>
+                                                 <td class="quantity">
+                                                     <div class="cart-plus-minus">
+                                                         <input class="cart-plus-minus-box" value="1" type="text">
+                                                         <div class="dec qtybutton">
+                                                             <i class="fa fa-minus"></i>
+                                                         </div>
+                                                         <div class="inc qtybutton">
+                                                             <i class="fa fa-plus"></i>
+                                                         </div>
+                                                     </div>
+                                                 </td>
+                                                 <td class="product-subtotal"><span class="amount">$25.45</span></td>
+                                             </tr>
+                                             <tr>
+                                                 <td class="product_remove">
+                                                     <a href="#">
+                                                         <i class="pe-7s-close" data-tippy="Remove" data-tippy-inertia="true"
+                                                     data-tippy-animation="shift-away" data-tippy-delay="50"
+                                                     data-tippy-arrow="true" data-tippy-theme="sharpborder"></i>
+                                                     </a>
+                                                 </td>
+                                                 <td class="product-thumbnail">
+                                                     <a href="#">
+                                                         <img src="{% static 'assets/images/product/small-size/1-3-112x124.png' %}" alt="Cart Thumbnail">
+                                                     </a>
+                                                 </td>
+                                                 <td class="product-name"><a href="#">Bleeding Heart</a></td>
+                                                 <td class="product-price"><span class="amount">$30.45</span></td>
+                                                 <td class="quantity">
+                                                     <div class="cart-plus-minus">
+                                                         <input class="cart-plus-minus-box" value="1" type="text">
+                                                         <div class="dec qtybutton">
+                                                             <i class="fa fa-minus"></i>
+                                                         </div>
+                                                         <div class="inc qtybutton">
+                                                             <i class="fa fa-plus"></i>
+                                                         </div>
+                                                     </div>
+                                                 </td>
+                                                 <td class="product-subtotal"><span class="amount">$30.45</span></td>
+                                             </tr>
+                                         </tbody>
+                                     </table>
+                                 </div>
+                                 <div class="row">
+                                     <div class="col-12">
+                                         <div class="coupon-all">
+                                             <div class="coupon">
+                                                 <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
+                                                 <input class="button mt-xxs-30" name="apply_coupon" value="Apply coupon" type="submit">
+                                             </div>
+                                             <div class="coupon2">
+                                                 <input class="button" name="update_cart" value="Update cart" type="submit">
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div class="row">
+                                     <div class="col-md-5 ml-auto">
+                                         <div class="cart-page-total">
+                                             <h2>Cart totals</h2>
+                                             <ul>
+                                                 <li>Subtotal <span>$79.35</span></li>
+                                                 <li>Total <span>$79.35</span></li>
+                                             </ul>
+                                             <a href="{% url 'checkout' %}">Proceed to checkout</a>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </form>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </main>
+         <!-- Main Content Area End Here -->
+ 
+         <!-- Begin Footer Area -->
+         <div class="footer-area" data-bg-image="assets/images/footer/bg/1-1920x465.jpg">
+             <div class="footer-top section-space-top-100 pb-60">
+                 <div class="container">
+                     <div class="row">
+                         <div class="col-lg-3">
+                             <div class="footer-widget-item">
+                                 <div class="footer-widget-logo">
+                                     <a href="index.html">
+                                         <img src=" {% static 'assets/images/logo/dark.png' %}" alt="Logo">
+                                     </a>
+                                 </div>
+                                 <p class="footer-widget-desc">Lorem ipsum dolor sit amet, consec adipisl elit, sed do eiusmod
+                                     tempor
+                                     <br>
+                             incidio ut labore et dolore magna.
+                                 </p>
+                                 <div class="social-link with-border">
+                                     <ul>
+                                         <li>
+                                             <a href="#" data-tippy="Facebook" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                 <i class="fa fa-facebook"></i>
+                                             </a>
+                                         </li>
+                                         <li>
+                                             <a href="#" data-tippy="Twitter" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                 <i class="fa fa-twitter"></i>
+                                             </a>
+                                         </li>
+                                         <li>
+                                             <a href="#" data-tippy="Pinterest" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                 <i class="fa fa-pinterest"></i>
+                                             </a>
+                                         </li>
+                                         <li>
+                                             <a href="#" data-tippy="Dribbble" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                 <i class="fa fa-dribbble"></i>
+                                             </a>
+                                         </li>
+                                     </ul>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-lg-2 col-md-4 pt-40">
+                             <div class="footer-widget-item">
+                                 <h3 class="footer-widget-title">Useful Links</h3>
+                                 <ul class="footer-widget-list-item">
+                                     <li>
+                                         <a href="#">About Pronia</a>
+                                     </li>
+                                     <li>
+                                         <a href="#">How to shop</a>
+                                     </li>
+                                     <li>
+                                         <a href="#">FAQ</a>
+                                     </li>
+                                     <li>
+                                         <a href="#">Contact us</a>
+                                     </li>
+                                     <li>
+                                         <a href="#">Log in</a>
+                                     </li>
+                                 </ul>
+                             </div>
+                         </div>
+                         <div class="col-lg-2 col-md-4 pt-40">
+                             <div class="footer-widget-item">
+                                 <h3 class="footer-widget-title">My Account</h3>
+                                 <ul class="footer-widget-list-item">
+                                     <li>
+                                         <a href="#">Sign In</a>
+                                     </li>
+                                     <li>
+                                         <a href="#">View Cart</a>
+                                     </li>
+                                     <li>
+                                         <a href="#">My Wishlist</a>
+                                     </li>
+                                     <li>
+                                         <a href="#">Track My Order</a>
+                                     </li>
+                                     <li>
+                                         <a href="#">Help</a>
+                                     </li>
+                                 </ul>
+                             </div>
+                         </div>
+                         <div class="col-lg-2 col-md-4 pt-40">
+                             <div class="footer-widget-item">
+                                 <h3 class="footer-widget-title">Our Service</h3>
+                                 <ul class="footer-widget-list-item">
+                                     <li>
+                                         <a href="#">Payment Methods</a>
+                                     </li>
+                                     <li>
+                                         <a href="#">Money Guarantee!</a>
+                                     </li>
+                                     <li>
+                                         <a href="#">Returns</a>
+                                     </li>
+                                     <li>
+                                         <a href="#">Shipping</a>
+                                     </li>
+                                     <li>
+                                         <a href="#">Privacy Policy</a>
+                                     </li>
+                                 </ul>
+                             </div>
+                         </div>
+                         <div class="col-lg-3 pt-40">
+                             <div class="footer-contact-info">
+                                 <h3 class="footer-widget-title">Got Question? Call Us</h3>
+                                 <a class="number" href="tel://123-456-789">123 456 789</a>
+                                 <div class="address">
+                                     <ul>
+                                         <li>
+                                             Your Address Goes Here
+                                         </li>
+                                     </ul>
+                                 </div>
+                             </div>
+                             <div class="payment-method">
+                                 <a href="#">
+                                     <img src="{% static 'assets/images/payment/1.png' %}" alt="Payment Method">
+                                 </a>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="footer-bottom">
+                 <div class="container">
+                     <div class="row">
+                         <div class="col-lg-12">
+                             <div class="copyright">
+                                 <span class="copyright-text">© 2021 Pronia Made with <i class="fa fa-heart text-danger"></i> by
+                             <a href="https://hasthemes.com/" rel="noopener" target="_blank">HasThemes</a> </span>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <!-- Footer Area End Here -->
+ 
+         <!-- Begin Scroll To Top -->
+         <a class="scroll-to-top" href="">
+             <i class="fa fa-angle-double-up"></i>
+         </a>
+         <!-- Scroll To Top End Here -->
+ 
+     </div>
+ 
+     <!-- Global Vendor, plugins JS -->
+ 
+     <!-- JS Files
+     ============================================ -->
+ 
 
-
+     <script  src="{% static 'assets/js/vendor/bootstrap.bundle.min.js' %}"></script>
+     <script src="{% static 'assets/js/vendor/jquery-3.6.0.min.js' %}" ></script>
+     <script  src="{% static 'assets/js/vendor/jquery-migrate-3.3.2.min.js' %}"></script>
+     <script  src="{% static 'assets/js/vendor/jquery.waypoints.js' %}"></script>
+     <script src="{% static 'assets/js/vendor/modernizr-3.11.2.min.js' %}"></script>
+     <script src="{% static 'assets/js/plugins/wow.min.js' %}"></script>
+     <script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
+     <script src="{% static 'assets/js/plugins/jquery.nice-select.js' %}"></script>
+     <script src="{% static 'assets/js/plugins/parallax.min.js' %}"></script>
+     <script src="{% static 'assets/js/plugins/jquery.magnific-popup.min.js' %}"></script>
+     <script src="{% static 'assets/js/plugins/tippy.min.js' %}"></script>
+     <script src="{% static 'assets/js/plugins/ion.rangeSlider.min.js' %}"></script>
+     <script src="{% static 'assets/js/plugins/mailchimp-ajax.js' %}"></script>
+     <script src="{% static 'assets/js/plugins/jquery.counterup.js' %}"></script>
+     <script src="{% static 'assets/js/main.js' %}"></script>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 {% endblock %}
-
-{% block scripts %}
-        <script  src="{% static 'assets/js/jquery-1.8.2.min.js' %}"></script>
-        <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}" ></script>
-        <script  src="{% static 'assets/js/jquery.backstretch.min.js' %}"></script>
-        <script  src="{% static 'assets/js/jquery.countdown.js' %}"></script>
-        <script src="{% static 'assets/js/scripts.js' %}"></script>
-
-        <script src="{% static 'assets/js/jquery/jquery-3.5.1.min.js' %}"></script>
-        <script src="{% static 'assets/js/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-        <script src="{% static 'assets/js/jarallax/jarallax.min.js' %}"></script>
-        <script src="{% static 'assets/js/jquery-ajaxchimp/jquery.ajaxchimp.min.js' %}"></script>
-        <script src="{% static 'assets/js/jquery-appear/jquery.appear.min.js' %}"></script>
-        <script src="{% static 'assets/js/jquery-circle-progress/jquery.circle-progress.min.js' %}"></script>
-        <script src="{% static 'assets/js/jquery-magnific-popup/jquery.magnific-popup.min.js' %}"></script>
-        <script src="{% static 'assets/js/jquery-validate/jquery.validate.min.js' %}"></script>
-        <script src="{% static 'assets/js/nouislider/nouislider.min.js' %}"></script>
-        <script src="{% static 'assets/js/odometer/odometer.min.js' %}"></script>
-        <script src="{% static 'assets/js/swiper/swiper.min.js' %}"></script>
-        <script src="{% static 'assets/js/tiny-slider/tiny-slider.min.js' %}"></script>
-        <script src="{% static 'assets/js/wnumb/wNumb.min.js' %}"></script>
-        <script src="{% static 'assets/js/wow/wow.js' %}"></script>
-        <script src="{% static 'assets/js/isotope/isotope.js' %}"></script>
-        <script src="{% static 'assets/js/countdown/countdown.min.js' %}"></script>
-        <script src="{% static 'assets/js/owl-carousel/owl.carousel.min.js' %}"></script>
-        <script src="{% static 'assets/js/slick.min.js' %}"></script>
-
-        
-
-        <!-- template js -->
-        <script src="{% static 'assets/js/halpes.js' %}"></script>
-
-
+<!-- 
 <script>
     var productapp = new Vue({
         el: '#cartapp',
@@ -455,5 +767,5 @@
     });
 
 </script>
-
-{% endblock %}
+ 
+-->

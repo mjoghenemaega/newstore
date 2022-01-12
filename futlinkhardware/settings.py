@@ -15,7 +15,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 
 import os
-import django_heroku
 from pathlib import Path
 import dj_database_url
 
@@ -30,7 +29,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'hy@@^j(ita$-q&1*1+gr!mje4_2cc!z4d8u8q8_z(y@2e(vm*1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [ '0.0.0.0', 'localhost', '127.0.0.1','fhtwo.herokuapp.com']
 
@@ -165,5 +164,3 @@ STATIC_ROOT  =   os.path.join(BASE_DIR, 'staticfiles')
 
 #  Add configuration for static files storage using whitenoise
 
-
-django_heroku.settings(locals())
